@@ -1,0 +1,51 @@
+<div class="container-full" style="margin: 0px 150px">
+  <h2>Web sale</h2>
+  <p>The w3-table class defines a basic table:</p>
+  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Create</button>
+  <table class="table table-striped">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Image</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let p of products">
+      <td>{{p.id}}</td>
+      <td>{{p.name}}</td>
+      <td>{{p.price}}</td>
+      <td><img src="{{p.image}}" width="300" height="200"></td>
+      <td><button type="button" class="btn btn-warning" (click)="showEdit(p.id)" data-toggle="modal" data-target="#myModal">Edit</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="delete(p.id)">Delete</button></td>
+    </tr>
+  </table>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Create</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <input placeholder="nhập id" [(ngModel)]="product.id" id="id"><br>
+        <input placeholder="nhập name" [(ngModel)]="product.name" id="name"><br>
+        <input placeholder="nhập img" [(ngModel)]="product.image" id="image"><br>
+        <input placeholder="nhập price" [(ngModel)]="product.price" id="price"><br>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createProduct()">Submit</button>
+      </div>
+
+    </div>
+  </div>
+</div>
